@@ -20,10 +20,8 @@ class HomeViewModel extends ChangeNotifier {
     _loading = true;
     notifyListeners();
     _errorMessage = '';
-
     try {
       _weatherData = await weatherRepository.getWeather();
-      print(_weatherData?.toJson().toString());
     } catch (e) {
       _errorMessage = '(ViewModel): Failed to fetch weather';
     } finally {

@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                             child: Text(data.item2),
                           )
                         : Text(
-                            "Weather Data: ${data.item3.toString()}",
+                            "Weather Data: ${data.item3?.toJson().toString()}",
                           );
               },
             ),

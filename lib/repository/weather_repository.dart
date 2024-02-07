@@ -11,7 +11,6 @@ class WeatherRepository {
   Future<WeatherData> getWeather() async {
     try {
       final response = await dioService.getWeather();
-      log(response.data.toString());
       final weatherObj = WeatherData.fromJson(response.data);
       return weatherObj;
     } catch (e) {

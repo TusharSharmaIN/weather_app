@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 
 import '../model/weather_data.dart';
 import '../api/dio_service.dart';
 import '../view_model/home_view_model.dart';
+import '../utils/extensions.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -39,39 +38,44 @@ class _HomeState extends State<Home> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //  weather description
-            const Text(
-              'Weather',
-            ),
-            const Image(
-              image: AssetImage('assets/images/cloud.png'),
-              height: 200,
-              width: 200,
-            ),
-            Selector<HomeViewModel, Tuple3<bool, String, WeatherData?>>(
-              selector: (_, viewModel) => Tuple3(
-                viewModel.isLoading,
-                viewModel.errorMessage,
-                viewModel.weatherData,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Selector<HomeViewModel, Tuple2<bool, String>>(
+                selector: (_, viewModel) => Tuple2(
+                  viewModel.isLoading,
+                  viewModel.errorMessage,
+                ),
+                builder: (context, data, child) {
+                  WeatherData? weatherData = homeViewModel.weatherData;
+                  return data.item1
+                      ? const Center(
+                          //  progress indicator
+                          child: CircularProgressIndicator(),
+                        )
+                      : data.item2.isNotEmpty
+                          ? Center(
+                              //  error widget
+                              child: Text(data.item2),
+                            )
+                          : Column(
+                              children: [
+                                //  rest body
+                                weatherData != null
+                                    ? weatherData.current.weatherCode.getWeatherDesc().loadAssetImage()
+                                    : const SizedBox.shrink(),
+                                const SizedBox(height: 24),
+                                Text(
+                                  "Weather Data: ${homeViewModel.weatherData?.toJson().toString()}",
+                                )
+                              ],
+                            );
+                },
               ),
-              builder: (context, data, child) {
-                return data.item1
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : data.item2.isNotEmpty
-                        ? Center(
-                            child: Text(data.item2),
-                          )
-                        : Text(
-                            "Weather Data: ${data.item3?.toJson().toString()}",
-                          );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

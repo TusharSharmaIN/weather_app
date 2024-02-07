@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import '../api/dio_service.dart';
 import '../model/weather_data.dart';
 

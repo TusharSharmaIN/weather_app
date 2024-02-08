@@ -1,10 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'view/weather_page.dart';
 import 'api/dio_service.dart';
 import 'repository/weather_repository.dart';
-import 'view/home.dart';
 import 'view_model/home_view_model.dart';
 
 void main() {
@@ -40,7 +39,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(title: title),
+      debugShowCheckedModeBanner: false,
+      home: const WeatherPage(),
     );
   }
 }

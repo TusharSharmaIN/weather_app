@@ -10,9 +10,13 @@ class Current {
   @JsonKey(name: 'weathercode')
   final int weatherCode;
 
+  @JsonKey(name: "is_day")
+  int isDay;
+
   Current({
     required this.temperature2M,
     required this.weatherCode,
+    required this.isDay,
   });
 
   factory Current.fromJson(Map<String, dynamic> json) => _$CurrentFromJson(json);

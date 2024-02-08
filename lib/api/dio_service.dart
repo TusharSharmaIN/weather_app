@@ -9,16 +9,20 @@ class DioService {
 
   DioService._();
 
-  static const latitude = 52.52;
-  static const longitude = 13.41;
+  static const lat = 26.4498919;
+  static const long = 80.3513054;
 
-  Future<Response> getWeather() async {
+  Future<Response> getWeather({
+    required double latitude,
+    required double longitude,
+  }) async {
     Map<String, dynamic> queryParameters = {
-      "latitude": latitude,
-      "longitude": longitude,
+      "latitude": lat,
+      "longitude": long,
       "current[]": [
         "temperature_2m",
         "weathercode",
+        "is_day",
       ],
       "daily[]": [
         "weathercode",
@@ -26,7 +30,7 @@ class DioService {
         "temperature_2m_min",
       ],
       "timezone": "auto",
-      "past_days": "3",
+      "forecast_days": "3",
     };
 
     var response = await DioClient().dio.get(

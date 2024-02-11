@@ -1,9 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'current.dart';
-import 'current_units.dart';
 import 'daily.dart';
-import 'daily_units.dart';
+import 'hourly.dart';
 
 part 'weather_data.g.dart';
 
@@ -21,23 +20,19 @@ class WeatherData {
   @JsonKey(name: 'current')
   final Current current;
 
-  @JsonKey(name: 'current_units')
-  final CurrentUnits currentUnits;
-
   @JsonKey(name: 'daily')
   final Daily daily;
 
-  @JsonKey(name: 'daily_units')
-  final DailyUnits dailyUnits;
+  @JsonKey(name: 'hourly')
+  final Hourly hourly;
 
   WeatherData({
     required this.latitude,
     required this.longitude,
     required this.timezone,
     required this.current,
-    required this.currentUnits,
     required this.daily,
-    required this.dailyUnits,
+    required this.hourly,
   });
 
   factory WeatherData.fromJson(Map<String, dynamic> json) => _$WeatherDataFromJson(json);

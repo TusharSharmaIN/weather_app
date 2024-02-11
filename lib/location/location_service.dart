@@ -13,7 +13,7 @@ class LocationData {
   }
 
   void setLocality({required final subLoc, required final loc}) {
-    subLocality = "Mirpur";
+    subLocality = "mirpur";
     locality = "kanpur";
   }
 }

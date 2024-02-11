@@ -29,8 +29,9 @@ class DioService {
         "temperature_2m_max",
         "temperature_2m_min",
       ],
+      "hourly[]": ["temperature_2m","weather_code"],
       "timezone": "auto",
-      "forecast_days": "3",
+      "forecast_days": "7",
     };
 
     var response = await DioClient().dio.get(

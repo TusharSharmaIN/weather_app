@@ -11,11 +11,8 @@ WeatherData _$WeatherDataFromJson(Map<String, dynamic> json) => WeatherData(
       longitude: (json['longitude'] as num).toDouble(),
       timezone: json['timezone'] as String,
       current: Current.fromJson(json['current'] as Map<String, dynamic>),
-      currentUnits:
-          CurrentUnits.fromJson(json['current_units'] as Map<String, dynamic>),
       daily: Daily.fromJson(json['daily'] as Map<String, dynamic>),
-      dailyUnits:
-          DailyUnits.fromJson(json['daily_units'] as Map<String, dynamic>),
+      hourly: Hourly.fromJson(json['hourly'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
@@ -24,7 +21,6 @@ Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
       'longitude': instance.longitude,
       'timezone': instance.timezone,
       'current': instance.current.toJson(),
-      'current_units': instance.currentUnits.toJson(),
       'daily': instance.daily.toJson(),
-      'daily_units': instance.dailyUnits.toJson(),
+      'hourly': instance.hourly.toJson(),
     };

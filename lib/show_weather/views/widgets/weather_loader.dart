@@ -34,21 +34,25 @@ class WeatherLoader extends StatelessWidget {
             Container(
               decoration: containerStyle(),
               height: 40,
-              width: 300,
+              width: 200,
             ),
             const SizedBox(height: 32),
-            Container(
-              decoration: containerStyle(),
-              height: 160,
-              width: 300,
-            ),
-            const SizedBox(height: 32),
-            Expanded(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Container(
                 decoration: containerStyle(),
-                width: 300,
+                height: 160,
               ),
             ),
+            const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Container(
+                decoration: containerStyle(),
+                height: 160,
+              ),
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),

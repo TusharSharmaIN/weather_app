@@ -148,6 +148,7 @@ class _ShowWeatherState extends State<ShowWeather> {
           minTemps: widget.weekMinTemps,
           maxTemps: widget.weekMaxTemps,
         ),
+        const SizedBox(height: 16),
       ],
     );
   }

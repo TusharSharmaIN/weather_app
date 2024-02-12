@@ -1,0 +1,13 @@
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/icons/weather-app.png
+  branding: assets/icons/weather-app.png
+  color_dark: "#121212"
+  image_dark: assets/icons/weather-app.png
+  branding_dark: assets/icons/weather-app.png
+
+  android_12:
+    image: assets/icons/weather-app.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/icons/weather-app.png
+    icon_background_color_dark: "#121212"

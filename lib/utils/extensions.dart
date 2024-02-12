@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +7,7 @@ extension IntExtension on int {
       return 'Clear';
     }
     else if (this >= 1 && this <= 3) {
-      return 'Partly-Cloud';
+      return 'Partly Cloud';
     }
     else if (this == 45) {
       return 'Fog';
@@ -91,16 +90,6 @@ extension IntExtension on int {
 }
 
 extension StringExtension on String {
-  Image loadAssetImage({
-    double? height,
-    double? width,
-  }) {
-    return Image(
-    image: AssetImage(this),
-    height: height ?? 200,
-    width: width ?? 200,
-    );
-  }
 
   SvgPicture loadAssetSvg({
     double? height,
@@ -147,7 +136,7 @@ extension DayExtension on DateTime {
     final sunrise = DateTime(
         year, month, day, 6, 00);
     final sunset = DateTime(
-        year, month, day, 15, 00);
+        year, month, day, 18, 00);
 
     if (currTime.isAfter(sunrise) && currTime.isBefore(sunset)) {
       return true;

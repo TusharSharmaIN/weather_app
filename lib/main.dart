@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-import 'view/weather_page.dart';
-import 'api/dio_service.dart';
-import 'repository/weather_repository.dart';
-import 'view_model/home_view_model.dart';
+import 'constants/app_theme.dart';
+import 'show_weather/views/weather_view.dart';
+import 'show_weather/view_models/weather_view_model.dart';
 
 void main() {
-  // final Dio dio = Dio();
-  final DioService dioService = DioService();
-  final WeatherRepository weatherRepository = WeatherRepository(
-    dioService: dioService,
-  );
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<HomeViewModel>(
+        ChangeNotifierProvider<WeatherViewModel>(
           create: (context) =>
-              HomeViewModel(weatherRepository: weatherRepository),
+              WeatherViewModel(),
         ),
       ],
       child: const MyApp(),
@@ -35,12 +32,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: title,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: const WeatherPage(),
+      home: const WeatherView(),
     );
   }
 }

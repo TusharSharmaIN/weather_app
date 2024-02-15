@@ -45,6 +45,7 @@ class _WeatherViewState extends State<WeatherView> {
       onRefresh: () async {
         await weatherViewModel.fetchWeatherData();
       },
+      displacement: 60,
       child: Scaffold(
         body: SafeArea(
           child: Stack(
@@ -67,6 +68,7 @@ class _WeatherViewState extends State<WeatherView> {
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 24.0),
                   child: Selector<WeatherViewModel, Tuple2<bool, String>>(

@@ -41,77 +41,82 @@ class _WeatherViewState extends State<WeatherView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                /// for background image
-                // image: DecorationImage(
-                //   fit: BoxFit.cover,
-                //   image: NetworkImage(night1),
-                // ),
+    return RefreshIndicator(
+      onRefresh: () async {
+        await weatherViewModel.fetchWeatherData();
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  /// for background image
+                  // image: DecorationImage(
+                  //   fit: BoxFit.cover,
+                  //   image: NetworkImage(night1),
+                  // ),
 
-                /// for gradient
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [AppColors.veryLightTangelo, AppColors.lightCoral],
-                ),
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 24.0),
-                child: Selector<WeatherViewModel, Tuple2<bool, String>>(
-                  selector: (_, viewModel) => Tuple2(
-                    viewModel.isLoading,
-                    viewModel.errorMessage,
+                  /// for gradient
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [AppColors.veryLightTangelo, AppColors.lightCoral],
                   ),
-                  builder: (context, data, child) {
-                    WeatherData? weatherData = weatherViewModel.weatherData;
-                    return data.item1
-                        ? const WeatherLoader()
-                        : data.item2.isNotEmpty
-                            ? Center(
-                                //  show error
-                                child: Text(data.item2),
-                              )
-                            : weatherData != null
-                                ? ShowWeather(
-                                    subLocality: weatherViewModel.subLocality,
-                                    locality: weatherViewModel.locality,
-                                    currTemp: weatherData.current.temperature2M,
-                                    weatherCode:
-                                        weatherData.current.weatherCode,
-                                    maxTemp: weatherData
-                                        .daily.temperature2MMax.first,
-                                    minTemp: weatherData
-                                        .daily.temperature2MMin.first,
-                                    isDay: weatherData.current.isDay == 1
-                                        ? true
-                                        : false,
-                                    hourlyTimes: weatherData.hourly.time,
-                                    hourlyWeatherCodes:
-                                        weatherData.hourly.weatherCode,
-                                    hourlyTemperatures:
-                                        weatherData.hourly.temperature2M,
-                                    weekDates: weatherData.daily.time,
-                                    weekWeatherCodes:
-                                        weatherData.daily.weatherCode,
-                                    weekMinTemps:
-                                        weatherData.daily.temperature2MMin,
-                                    weekMaxTemps:
-                                        weatherData.daily.temperature2MMax,
-                                  )
-                                : const SizedBox.shrink();
-                  },
                 ),
               ),
-            ),
-          ],
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: Selector<WeatherViewModel, Tuple2<bool, String>>(
+                    selector: (_, viewModel) => Tuple2(
+                      viewModel.isLoading,
+                      viewModel.errorMessage,
+                    ),
+                    builder: (context, data, child) {
+                      WeatherData? weatherData = weatherViewModel.weatherData;
+                      return data.item1
+                          ? const WeatherLoader()
+                          : data.item2.isNotEmpty
+                              ? Center(
+                                  //  show error
+                                  child: Text(data.item2),
+                                )
+                              : weatherData != null
+                                  ? ShowWeather(
+                                      subLocality: weatherViewModel.subLocality,
+                                      locality: weatherViewModel.locality,
+                                      currTemp: weatherData.current.temperature2M,
+                                      weatherCode:
+                                          weatherData.current.weatherCode,
+                                      maxTemp: weatherData
+                                          .daily.temperature2MMax.first,
+                                      minTemp: weatherData
+                                          .daily.temperature2MMin.first,
+                                      isDay: weatherData.current.isDay == 1
+                                          ? true
+                                          : false,
+                                      hourlyTimes: weatherData.hourly.time,
+                                      hourlyWeatherCodes:
+                                          weatherData.hourly.weatherCode,
+                                      hourlyTemperatures:
+                                          weatherData.hourly.temperature2M,
+                                      weekDates: weatherData.daily.time,
+                                      weekWeatherCodes:
+                                          weatherData.daily.weatherCode,
+                                      weekMinTemps:
+                                          weatherData.daily.temperature2MMin,
+                                      weekMaxTemps:
+                                          weatherData.daily.temperature2MMax,
+                                    )
+                                  : const SizedBox.shrink();
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

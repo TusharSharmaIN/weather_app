@@ -1,16 +1,31 @@
-# weather_app
+**Weather App**
 
-A new Flutter project.
+This Flutter application provides users with comprehensive weather information, including current weather conditions, hourly forecasts, and a 7-day forecast. It utilizes APIs to fetch real-time weather data and presents it in a user-friendly interface. 🌤️📱
 
-## Getting Started
+**Features:**
 
-This project is a starting point for a Flutter application.
+- **Current Weather:** View the current weather conditions including temperature, humidity, wind speed, and more. 🌡️💧💨
+- **Hourly Forecast:** Get an hourly breakdown of weather forecasts to plan your day effectively. 🕒📊
+- **7-Day Forecast:** Access a weekly weather forecast to plan ahead for the upcoming days. 📅
+- **Provider for State Management:** Utilizes Provider package for state management following the MVVM (Model-View-ViewModel) architecture pattern. 🏗️
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Installation:**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Download the APK from the [release tab](https://github.com/TusharSharmaIN/weather_app/releases) of the repository.
+2. Transfer the downloaded APK to your physical Android device.
+3. On your Android device, navigate to the location where the APK is saved.
+4. Tap on the APK file to initiate the installation process.
+5. Follow the on-screen instructions to complete the installation.
+6. Once installed, launch the app, grant necessary permissions and enjoy real-time weather updates! 🚀
+
+**APIs Used:**
+
+- **OpenWeatherMap API:** This app integrates with the OpenWeatherMap API to fetch weather data. 🌐
+
+**How to Use:**
+
+1. Upon opening the app, the current weather details will be displayed on the home screen.
+2. Swipe left or right to navigate between different sections such as hourly forecast and 7-day forecast.
+3. Tap on any specific section to view detailed information about it.
+4. Enjoy staying updated with accurate weather forecasts! ☔🌈

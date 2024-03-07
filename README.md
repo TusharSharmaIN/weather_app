@@ -9,6 +9,10 @@ This Flutter application provides users with comprehensive weather information, 
 - **7-Day Forecast:** Access a weekly weather forecast to plan ahead for the upcoming days. 📅
 - **Provider for State Management:** Utilizes Provider package for state management following the MVVM (Model-View-ViewModel) architecture pattern. 🏗️
 
+**Screenshots:**
+
+<img src="https://github.com/TusharSharmaIN/weather_app/assets/32814311/757b2969-ea6c-4cc5-864a-f46dd4e29c1f" width="160">
+
 
 **Installation:**
 
